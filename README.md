@@ -1,2 +1,2 @@
-# meta-javascript
-Personal javascript relearn project
+# meta-web-developer
+Personal web development relearn project
