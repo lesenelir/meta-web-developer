@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>原型链</title>
+  </head>
+  <body>
+    <script>
+      function Car() {
+        // var this = {
+        //    ...
+        // }
+        this.brand = 'benz'
+      }
+
+      Car.prototype = {
+        brand: 'Mazda',
+        intro: function () {
+          console.log(this.brand + '车牌')
+        }
+      }
+
+      let car = new Car()
+      car.intro() // 此时的this为实例对象
+      Car.prototype.intro() // 此时的this为原型对象
+      // 实例化后自己有的属性，就不会向原型上找
+
+
+      // Object.create(对象)
+      // 提供了自定义原型的功能
+
+      // Object.create(a, b) 有两个属性，第一个属性是必须的，第二个属性是可选的
+      // 第一个参数是新建对象的原型对象   - 即 x.__proto__ = 第一个参数
+      // 第二个参数是新创建实例对象上的属性 - 即 x的属性是第二个参数
+      let obj1 = Object.create(Object.prototype)
+      let obj2 = new Object()
+
+      let test = {
+        num: 2
+      }
+      let o = Object.create(test)
+      console.log(o)
+      console.log(o.__proto__ === test)
+
+    </script>
+  </body>
+</html>

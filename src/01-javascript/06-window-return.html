@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title> window and return </title>
+  </head>
+  <body>
+
+    <script>
+
+      // return
+      function test() {
+        let a = 1
+
+        function plus() {
+          a++
+          console.log(a)
+        }
+
+        return plus // return内部函数，内部函数还是有外部的AO对象
+      }
+
+      let plus = test()
+      plus()
+      plus()
+      plus()
+
+      // window
+      function test2() {
+        let a = 1
+
+        function add() {
+          a++
+          console.log(a)
+        }
+
+        window.add = add
+      }
+
+      console.log(window.add)
+      test2() // 执行函数，把add函数挂在到window对象上
+      console.log(window.add)
+      add()
+      add()
+      add()
+
+      // js插件写法
+      // 立即执行函数的作用：防止作用域被污染，隔离作用域（因为作用域是函数作用域）
+      ;(function () {
+        function Hello() {
+          console.log('Hello World')
+        }
+
+        window.Hello = Hello
+      }())
+      console.log(window.Hello)
+
+      // 写一个插件，任意传入两个数字 实现：加减乘除方法
+      ;(function () {
+        function Compute(opt) {
+          this.x = opt.firstNum | 1
+          this.y = opt.secondNum | 1
+        }
+
+        Compute.prototype = {
+          add: function () {
+            return this.x + this.y
+          },
+          sub: function () {
+            return this.x - this.y
+          },
+          multi: function () {
+            return this.x * this.y
+          },
+          division: function () {
+            return Math.floor(this.x / this.y)
+          }
+        }
+        // 把Compute构造函数挂在到window对象的属性上
+        window.Compute = Compute
+      }())
+
+      let compute = new Compute({
+        firstNum: 10,
+        secondNum: 2
+      })
+
+      console.log(window.Compute)
+      console.log(compute.sub())
+      console.log(Compute.prototype)
+
+    </script>
+
+  </body>
+</html>

@@ -88,3 +88,35 @@ let sumNum = res.add()
 console.log(sumNum)
 let multiNum = res.multi()
 console.log(multiNum)
+
+
+console.log("==============================")
+
+function Car(opt) {
+  this.brand = opt.brand
+  this.color = opt.color
+  this.displacement = opt.displacement
+}
+
+function People(opt) {
+  this.name = opt.name
+  this.age = opt.age
+  this.income = opt.income
+  this.selectCar = function () {
+    let myCar = new Car(opt.carOpt) // 传递对象
+    console.log(`${this.name} 选择了排量为 ${myCar.displacement}的车`)
+  }
+}
+
+let p1 = new People({
+  name: '约翰',
+  age: 29,
+  income: '20K',
+  carOpt: {
+    brand: '路虎',
+    color: '红色',
+    displacement: '2.0'
+  }
+})
+
+p1.selectCar()

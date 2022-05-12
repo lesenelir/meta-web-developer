@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+  </head>
+  <body>
+    <script>
+
+      function test() {
+        console.log(arguments)
+      }
+      test(1, 2, 3)
+
+      function sum() {
+        let res = 0
+        for (let i = 0; i < arguments.length; i++) {
+          res += arguments[i]
+        }
+        return res
+        // 如果没有return， js会隐式添加一个return undefined
+      }
+
+      function sum2(...rest) {
+        let res = 0
+        for (let i = 0; i < rest.length; i++) {
+          res += rest[i]
+        }
+        return res
+        // console.log(arguments, rest)
+      }
+
+
+      console.log(sum2(1, 2, 3, 4, 5))
+
+      // 要注意arguments 和 parameters之间的区别
+      // rest参数 是ES6 对arguments的一种扩展
+      // arguments 中还有callee ， 而rest参数只是一个数组
+
+    </script>
+  </body>
+</html>
