@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>类数组</title>
+  </head>
+  <body>
+    <script>
+      // 类数组 没有Array实例的方法
+      // document.getElementsByTagName('div') // 类数组
+      function test() {
+        console.log(arguments)
+        console.log(typeof arguments) // object
+      }
+      test(1, 2, 3)
+
+      // 自定义类数组
+      let obj = {
+        0: 1,
+        1: 2,
+        2: 3,
+        3: 4,
+        length: 4,
+        push: Array.prototype.push
+      }
+      obj.push(5)
+      console.log(obj)
+
+      let obj2 = {
+        // '0': 1,
+        // '1': 2,
+        '2': 3,
+        '3': 4,
+        'length': 2,
+        'splice': Array.prototype.splice,
+        'push': Array.prototype.push
+      }
+      obj2.push(1)
+      obj2.push(2)
+      console.log(obj2) // [empty × 2, 1, 2, splice: ƒ, push: ƒ]
+      // obj2[2] = 1
+      // obj2[3] = 2
+      // 该类数组（对象） 只显示下标为2和3的内容, 修改2，3
+      // 修改2 3 的值，并且增加数组的长度
+      // push 是往后push
+
+
+
+
+    </script>
+  </body>
+</html>

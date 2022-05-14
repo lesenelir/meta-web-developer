@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>arguments</title>
+  </head>
+  <body>
+    <script>
+      // Arguments 对象
+      /**
+       * 函数内部对应参数值的实参列表 对象 内置局部变量
+       *
+       * 类数组对象 - Array like
+       *  length 从0开始的属性下标
+       *  【重要】：没有数组的内置方法，并且是可迭代的
+       *
+       */
+
+      function test(a, b, c) {
+        /**
+         * callee: 宿主对象
+         * Symbol.iterator 可迭代对象标志
+         *
+         */
+        console.log(arguments)
+        console.log(arguments.toString()) // [object Arguments]
+        console.log(Array.isArray(arguments)) //false
+        console.log(arguments.callee)
+
+        // 类数组 转变为 数组
+        let argArr = [].slice.call(arguments)
+        console.log(argArr)
+
+      }
+      test(1, 2, 3)
+
+      // 箭头函数没有arguments ，用剩余参数...args来处理
+      let test2 = (...args) => {
+        console.log(args)
+        console.log(Array.isArray(args)) // true
+      }
+      test2(1, 1)
+
+
+      // Note： arguments使用最多的场景： 实参个数 > 形参个数 & 不定参数
+
+      // 形残中但凡有一个参数有默认值，arguments都不会对应跟踪参数最终的值
+
+
+    </script>
+  </body>
+</html>

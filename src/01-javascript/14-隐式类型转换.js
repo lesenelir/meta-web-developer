@@ -27,8 +27,10 @@ console.log(Number(a) + "-" + typeof(Number(a))) // NaN-number
 
 
 // parseInt(变量名, 进制数) 转换为整形
+// parseInt 第一个参数是一个字符串，如果是整数，会自动调用toString方法转成字符串
 let b = 11001
-console.log(parseInt(b, 2)) // 以某一进制数转为10进制数取值
+console.log(parseInt(b, 2)) // 以某一进制数转为10进制数取值 // 25
+console.log(parseInt('100', 2)) // 4  - parseInt
 
 
 console.log(parseInt('abc123')) // NaN
