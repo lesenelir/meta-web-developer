@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box {
+        height: 100px;
+        width: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div></div>
+    <div id="box"></div>
+
+    <script>
+      // DOM 文档对象模型 document object model
+      // DOM对象 -> 宿主对象
+      // DOM: 通过浏览器的一套方法表示操作HTML文档或者XML
+      // DOM 不能操作CSS， 只能操作内联样式 从而覆盖之前的样式
+      const div = document.querySelector('.box')
+      div.style.backgroundColor = 'green'
+
+      const div2 = document.getElementsByTagName('div')[0]
+      console.log(div2)
+
+      const div3 = document.getElementById('box')
+      console.log(div3)
+    </script>
+
+  </body>
+</html>

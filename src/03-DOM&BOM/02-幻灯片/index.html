@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/index.css">
+  </head>
+  <body>
+    <div class="slider-wrap">
+      <div class="slider">
+        <ul class="slider-list">
+          <li class="slider-item active">
+            <a href="">
+              <img src="./img/01.jpg" alt="" />
+            </a>
+          </li>
+          <li class="slider-item">
+            <a href="">
+              <img src="./img/02.jpg" alt="" />
+            </a>
+          </li>
+          <li class="slider-item">
+            <a href="">
+              <img src="./img/03.jpg" alt="" />
+            </a>
+          </li>
+          <li class="slider-item">
+            <a href="">
+              <img src="./img/04.jpg" alt="" />
+            </a>
+          </li>
+          <li class="slider-item">
+            <a href="">
+              <img src="./img/05.jpg" alt="" />
+            </a>
+          </li>
+          <li class="slider-item">
+            <a href="">
+              <img src="./img/06.jpg" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="thumbs">
+        <ul class="thumbs">
+          <li class="thumb-item cur">
+            <a href="javascript:;">
+              <img src="./img/01.jpg" alt="" />
+            </a>
+          </li>
+          <li class="thumb-item">
+            <a href="javascript:;">
+              <img src="./img/02.jpg" alt="" />
+            </a>
+          </li>
+          <li class="thumb-item">
+            <a href="javascript:;">
+              <img src="./img/03.jpg" alt="" />
+            </a>
+          </li>
+          <li class="thumb-item">
+            <a href="javascript:;">
+              <img src="./img/04.jpg" alt="" />
+            </a>
+          </li>
+          <li class="thumb-item">
+            <a href="javascript:;">
+              <img src="./img/05.jpg" alt="" />
+            </a>
+          </li>
+          <li class="thumb-item">
+            <a href="javascript:;">
+              <img src="./img/06.jpg" alt="" />
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="./js/index.js"></script>
+
+    <script>
+      let slider = new Slider({
+        sliderItem: 'slider-item',
+        thumbItem: 'thumb-item'
+      })
+    </script>
+
+  </body>
+</html>
