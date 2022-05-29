@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <div id="box">123</div>
+
+    <div>12</div>
+    <div>34</div>
+
+    <div class="box">98</div>
+    <div class="box">89</div>
+
+    <input type="text" name="username">
+
+    <div class="test">123</div>
+    <div>234</div>
+
+    <div>
+      <h1>
+        <p>233</p>
+      </h1>
+    </div>
+
+    <div>
+      <p>567</p>
+    </div>
+
+    <!-- 区别：querySelector 和 querySelectorAll 不实时问题   -->
+    <div class="diff">123</div>
+    <div class="diff">345</div>
+    <div class="diff">888</div>
+
+    <script>
+      // 规范： id 一般称之为钩子，不能将id作为样式而写
+      // id 一般而言在模块化开发中，是对接后端的
+      // document 文档 是一个对象
+
+      // 1. getElementById
+      console.log(document)
+      let box = document.getElementById('box')
+      // Note: getElementById在IE8以下可以通过name属性找到标签
+      console.log(box) // 标签元素
+
+      // 2. getElementsByTagName
+      let boxes = document.getElementsByTagName('div')
+      // 得到一个div类数组 （对象）
+      console.log(boxes)
+      // boxes.push(1) // 报错， 因为是类数组，类数组是对象不是数组
+      console.log(boxes.length)
+      // 类数组 是通过对象去模拟数组，有数组的表现方法，但没有数组方法
+
+      // 3. getElementsByClassName
+      let boxesClass = document.getElementsByClassName('box')
+      console.log(boxesClass)
+
+      // 4. getElementsByName
+      // 通过标签的name属性去获取标签
+      let input = document.getElementsByName('username')
+      console.log(input)
+
+      // 5. querySelector
+      // 当有多个匹配的时候，只能选择第一个，不能选择多个
+      let div1 = document.querySelector('.test')
+      console.log(div1)
+      let p1 = document.querySelector('div > p') // 选择div标签内直系的子元素
+      p1.style.color = 'green'
+
+      // 6. querySelectorAll
+      // 选一组元素标签
+      let divArr = document.querySelectorAll('div')
+      console.log(divArr) // 类数组
+
+      // Note: querySelector 和 querySelectorAll 括号内的内容写法和css选择器相同
+
+      console.log("==========================================")
+
+      // querySelector querySelectorAll 缺点：
+      //   1. 性能差
+      //   2. 不实时，相当于存放缓存 【致命】 存储片段
+      //      并不是真正的存储节点
+      // let divArr1 = document.getElementsByClassName('diff')
+      let divArr1 = document.querySelectorAll('.diff')
+      console.log(divArr1)
+      divArr1[0].remove() // 移除元素
+      console.log(divArr1)
+      // 使用getElementsByClassName 删除元素后 类数组改变
+      // 使用querySelectorAll 删除元素后 类数组元素不变，所以 是缓存了一份，当要对元素进行修改的时候不行
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <ul>
+      <li>123
+        <!-- h2是a的前一个兄弟元素节点，p是a的后一个兄弟元素节点 -->
+        <h2>标题标签</h2>
+        <a href="">a标签</a>
+        <p>p标签</p>
+      234</li>
+    </ul>
+
+    <script>
+      // 遍历节点树
+      // 节点不等于元素，节点包含元素，元素是节点的一部分 -> 元素节点 = DOM元素
+
+      // 节点
+      // parentNode
+      // childNodes
+      // firstChild
+      // lastChild
+      // nextSibling
+      // previousSibling
+
+
+      // 元素节点
+      // parentElement
+      // children
+      // firstElementChild
+      // lastElementChild
+      // nextElementSibling
+      // previousElementSibling
+
+
+      // 1. 元素节点 = 1
+      // 2. 属性节点 = 2
+      // 3. 文本节点 = 3 text
+      // 4. 注释节点 = 8 comment
+      // 5. document = 9
+      // 6. DocumentFragment = 11
+
+
+      console.log(document.parentNode) // null
+      // parentNode 父节点 （一个节点只有一个父节点）
+      let a = document.getElementsByTagName('a')[0]
+      console.log(a)
+
+      // childNodes 子节点集合
+      let lis = document.getElementsByTagName('li')[0]
+      console.log(lis.childNodes) // 9  - 节点不仅仅包含元素
+
+      // firstChild
+      console.log(lis.firstChild)
+      console.log(lis.firstElementChild)
+
+      // lastChild
+      console.log(lis.lastChild)
+      console.log(lis.lastElementChild)
+
+      // nextSibling
+      console.log(a.nextSibling) // 文本节点
+      console.log(a.nextElementSibling) // p
+
+      // previousSibling
+      console.log(a.previousSibling) // 文本节点
+      console.log(a.previousElementSibling) // h2
+
+
+      // 遍历元素节点
+      // parentElement
+      console.log(a.parentElement.parentElement) // li.parentElement 是ul
+
+      // children
+      console.log(lis.children)
+
+      // childrenElementCount = children.length
+      console.log(lis.childElementCount)
+      console.log(lis.children.length)
+      console.log(lis.childElementCount === lis.children.length) // true
+
+
+    </script>
+  </body>
+</html>
