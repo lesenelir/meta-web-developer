@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div>
+      <p>123</p>
+    </div>
+    <p>div标签外的p元素</p>
+
+    <script>
+      // 1. getElementById
+      // 保存在 Document.prototype上，
+      // HTMLDocument.prototype 和 Element.prototype 都没有
+      let div = document.getElementsByTagName('div')[0]
+
+      // 2. getElementsByName
+      // Document.prototype 上有
+      // HTMLDocument.prototype 和 Element.prototype 没有
+
+      // 3. getElementsByTagName
+      //    getElementsByClassName
+      //    querySelector querySelectorAll
+      //    这些在Document.prototype 和 Element.prototype 上有
+      //      但是在HTMLDocument.prototype上没有
+      let p = div.getElementsByTagName('p')
+      console.log(p)
+      // Note: 因为Element.prototype 有getElementsByTagName方法
+      //       所以div作为一个元素对象去调用该方法
+
+      // * 统配所有的标签
+      let all = document.getElementsByTagName('*')
+      console.log(all) // html, head, meta, title, body, div, p, p, script]
+
+      // body 和 head 标签写法
+      // let head = document.getElementsByTagName('head')[0]
+      let body = document.body
+      let head = document.head
+
+    </script>
+
+  </body>
+</html>

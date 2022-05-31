@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="box" style="background-color: green">
+      文本节点
+      <!-- 我是注释节点 -->
+      <h1>我是标题标签</h1>
+      <a href="">我是超链接标签</a>
+      <p>我是段落标签</p>
+    </div>
+
+    <script>
+      // 节点的属性：
+      //   nodeName
+      //   nodeValue（节点值）  文本节点、属性节点、注释节点
+
+      let div = document.getElementsByTagName('div')[0]
+      console.log(div)
+
+      // 1. nodeName 获取节点的名字 （只读）
+      console.log(document.nodeName) // #document
+      console.log(div.firstChild.nodeName) // #text
+      console.log(div.childNodes[3].nodeName) // H1
+
+      // 2. nodeValue 获取节点的值 （可读可写）
+      console.log(div.firstChild.nodeValue) // 文本节点获取节点值
+      console.log(div.childNodes[1].nodeValue) // 数值节点获取节点值
+      console.log(div.getAttributeNode('style').nodeValue) // 属性节点获取节点值
+      // console.log(div.firstChild.nodeValue = '重写文本节点')
+
+      // 3. nodeType 返回节点的数字值
+      console.log(div.nodeType)
+      console.log(div.firstChild.nodeValue)
+
+      // 4. attributes 标签元素的属性集合
+      console.log(div.attributes)
+      console.log(div.getAttribute('style'))
+
+      // 5. hasChildNodes 判断节点是否有子节点
+
+    </script>
+  </body>
+</html>

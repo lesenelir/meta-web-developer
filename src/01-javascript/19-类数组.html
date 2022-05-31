@@ -6,6 +6,22 @@
   </head>
   <body>
     <script>
+      // 数组本质也是一种对象
+      let arrT = [1, 2, 3]
+      let objT = {
+        // 0: 1,
+        // 1: 2,
+        2: 3,
+        length: 4,
+        push: Array.prototype.push,
+        // 类数组 变为 真正的数组 一定要有 push 和 splice 方法
+        splice: Array.prototype.splice
+      }
+      // objT.push(4)
+      console.log(objT) // Object(4)[empty × 2, 3, empty, push: ƒ, splice: ƒ]
+      // Note： 此时该类数组长度为4 ，下标2有元素，所以前面空两个，后面空一个
+
+
       // 类数组 没有Array实例的方法
       // document.getElementsByTagName('div') // 类数组
       function test() {

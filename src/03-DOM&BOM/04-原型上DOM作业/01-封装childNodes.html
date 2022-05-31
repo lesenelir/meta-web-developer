@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="box" style="background-color: green">
+      文本节点
+      <!-- 我是注释节点 -->
+      <h1>我是标题标签</h1>
+      <a href="">我是超链接标签</a>
+      <p>我是段落标签</p>
+    </div>
+
+    <script>
+      // 封装childNodes:
+      // 遍历一个父元素 找到他的子元素节点
+      // 有数字参数 -> 某一个对应nodeType的子元素
+      // 没有数字参数 -> 子元素节点的集合
+      let div = document.getElementsByTagName('div')[0]
+      console.log(div.childNodes)
+
+      Node.prototype.getChild = function (type) {
+        const res = []
+        const children = this.childNodes
+        if (typeof type === 'undefined') {
+          // 返回子元素的节点集合
+          // this 为该元素节点
+          for (let i = 0; i < children.length; i++) {
+            res[i] = children[i]
+          }
+        } else {
+          // 传入数字type 是number类型， 返回对应nodeType子元素
+          switch (type) {
+            case 1: // 元素节点
+              break
+            case 2: // 属性节点
+              break
+            case 3: // 文本节点
+              break
+            case 8: // 注释节点
+              break
+            case 9: // document
+              break
+            case 11: // DocumentFragment
+              break
+          }
+        }
+        return res
+      }
+
+    </script>
+
+  </body>
+</html>

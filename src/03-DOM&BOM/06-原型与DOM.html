@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div>123</div>
+
+    <script>
+
+      console.log(Document) // 构造函数
+      console.log(Document.prototype)
+      console.log(document.__proto__ === HTMLDocument.prototype) // true
+      // document 继承自 HTMLDocument 构造函数
+      console.log(HTMLDocument.prototype.__proto__ === Document.prototype) // true
+      // Note: getElementById 等一系列方法是在Document.prototype原型对象中
+
+      // 节点Node
+      console.log(document.__proto__.__proto__.__proto__) // Node
+      console.log(Node.__proto__) // EventTarget() { [native code] }
+
+      // Object.prototype.toString.call 可以判断标签类型
+      let div = document.getElementsByTagName('div')[0]
+      console.log(Object.prototype.toString.call(div)) // [object HTMLDivElement]
+
+    </script>
+
+  </body>
+</html>
