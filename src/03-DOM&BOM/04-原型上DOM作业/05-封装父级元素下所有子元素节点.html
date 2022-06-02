@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="box">
+      <ul>
+        <li>
+          <h1></h1>
+          <p></p>
+          <a href=""></a>
+        </li>
+        <li>
+          <div></div>
+        </li>
+      </ul>
+      <h1><span><a href=""></a></span></h1>
+    </div>
+    <script>
+      // 遍历一个父级别元素下面所有的子元素节点
+      // 思路： 遍历
+      function getFullChildren(node) {
+        let children = node.childNodes,
+            len = children.length,
+            item
+
+        if (node && node.nodeType === 1) {
+          console.log(node)
+        }
+
+        for (let i = 0; i < len; i++) {
+          item = children[i]
+
+          if (item.nodeType === 1) {
+            getFullChildren(item)
+          }
+        }
+      }
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+
+    <script>
+      // innerHTML innerText
+      // 两个存在于HTMLElement.prototype
+      // innerHTML 不仅存在于HTMLElement.prototype 还存在于 Element.prototype
+      let list = document.getElementById('list')
+      let data = [
+        {
+          "title": "天下无贼",
+          "area": "中国"
+        },
+        {
+          "title": "复仇者联盟",
+          "area": "美国"
+        },
+        {
+          "title": "比海更深",
+          "area": "日本"
+        }
+      ]
+
+      let item
+      for (let i = 0; i < data.length; i++) {
+        item = data[i]
+
+        let li = document.createElement('li'),
+            h2 = document.createElement('h2'),
+            p = document.createElement('p')
+
+        h2.innerHTML = item.title
+        p.innerHTML = item.area
+
+        li.appendChild(h2)
+        li.appendChild(p)
+        list.appendChild(li)
+      }
+
+    </script>
+
+  </body>
+</html>

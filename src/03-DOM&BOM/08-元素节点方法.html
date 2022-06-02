@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <a href="">我是超链接</a>
+
+    <script>
+      // 1. 元素节点创建 document.createElement()
+      let div = document.createElement('div')
+      div.innerHTML = 123
+      document.body.appendChild(div)
+      console.log(div)
+
+      // 2. 创建文本节点 document.createTextNode('')
+      let text = document.createTextNode('LeeText')
+      document.body.appendChild(text)
+
+      // 3. 创建注释节点 document.createComment('')
+      let comment = document.createComment('注释')
+      document.body.appendChild(comment)
+
+      // 4. appendChild(节点 / DOM元素) 增加子节点
+      // Node.prototype - DOM 结构树的顶层是Node
+      let p = document.createElement('p')
+      p.innerHTML = 'ppp'
+      // document.body.appendChild(p) // 总在文档的最后添加
+      div.appendChild(p)
+
+      let a = document.getElementsByTagName('a')[0] // a 是最早HTML中的a标签
+      a.href = ''
+      console.log(a)
+      let div2 = document.createElement('div')
+      div2.innerHTML = '<p>我是段落标签</p>'
+      document.body.appendChild(div2)
+      div2.appendChild(a)  // appendChild 会有"剪切节点"功能 【重要】
+      // Note： appendChild 两大功能：
+      //            1. 添加节点
+      //            2. 剪切节点
+      //                 如果要插入的节点之前就在HTML文档树中就存在，则需要先剪切再插入
+
+
+    </script>
+
+  </body>
+</html>

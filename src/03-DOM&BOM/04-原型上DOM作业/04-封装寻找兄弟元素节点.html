@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      // 封装寻找兄弟元素节点
+      // 需求：参数N为正，找之后的第N个元素
+      //      参数N为负，找之前的第N个元素
+      //      参数N为零，找到自己
+      Element.prototype.findElementSibling = function (n) {
+        // nextElementSibling
+        // previousElementSibling
+        let elem = this // 调用该方法的元素
+
+        while (n) {
+          if (n > 0) {
+            elem = elem.nextSibling
+            while (elem && elem.nodeType !== -1) {
+              elem = elem.nextSibling
+            }
+            n--
+          } else if (n < 0) {
+            elem = elem.previousElementSibling
+            while (elem && elem.nodeType !== -1) {
+              elem = elem.previousElementSibling
+            }
+            n++
+          }
+
+        }
+
+        return elem
+      }
+
+      // Note：查找n级元素一般都要用到while循环
+    </script>
+
+  </body>
+</html>

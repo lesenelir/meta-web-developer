@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      // 浏览器的怪异模式 和 标准模式
+      // 浏览器有向后兼容的机制
+
+      // <!DOCTYPE html> 兼容W3C模式  =  标准模式
+
+      // 判断浏览器是怪异模式还是标准模式
+      console.log(document.compatMode)
+      // 标准模式： CSS1Compat
+      // 怪异模式（没有<!DOCTYPE html>）：BackCompat
+
+      // -------------------------------------------
+
+      // 获取浏览器的可视区域尺寸 （窗口宽高大小）
+      // 常规写法： window.innerWidth / innerHeight
+      // IE9/IE8以下：
+      // 标准模式：document.documentElement.clientWidth / clientHeight
+      // 怪异模式：document.body.clientWidth / clientHeight
+
+      // 封装可视区域尺寸的方法
+      function getViewportSize() {
+        if (window.innerWidth) {
+          return {
+            width: window.innerWidth,
+            height: window.innerHeight
+          }
+        } else {
+          // 判断兼容性模式
+          if (document.compatMode === 'BackCompat') {
+            // 怪异模式
+            return {
+              width: document.body.clientWidth,
+              height: document.body.clientHeight
+            }
+          } else  {
+            // 标准模式
+            return {
+              width: document.documentElement.clientWidth,
+              height: document.documentElement.clientHeight
+            }
+
+          }
+        }
+
+      }
+
+
+    </script>
+  </body>
+</html>

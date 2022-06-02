@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+
+      .box.active {
+        color: skyblue;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">123</div>
+
+    <script>
+      // JS 操作DOM 只能间接的操作CSS 只是在内联样式中修改
+      // JS 访问不到CSS中； JS 操作不了CSS ；
+      // JS 只是操作标签中style属性中的属性
+
+      let oDiv = document.getElementsByClassName('box')[0]
+
+      // 通过动态添加行间样式 - 但是会引起大量的回流， 可以考虑设置类，在类中添加属性
+      oDiv.style.backgroundColor = 'red' // 变量为小驼峰形式
+      oDiv.style.width = '200px'
+      oDiv.style.height = '200px'
+      // 保留字前面要加css - float 设置问题
+      oDiv.style.cssFloat = 'float'
+      // console.log(oDiv.offsetWidth)
+
+      // 必须： 尽可能的使用类操作，把样式写在类中
+      oDiv.className += ' active'
+
+    </script>
+
+  </body>
+</html>

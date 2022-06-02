@@ -21,33 +21,29 @@
       let div = document.getElementsByTagName('div')[0]
       console.log(div.childNodes)
 
-      Node.prototype.getChild = function (type) {
-        const res = []
-        const children = this.childNodes
-        if (typeof type === 'undefined') {
-          // 返回子元素的节点集合
-          // this 为该元素节点
-          for (let i = 0; i < children.length; i++) {
-            res[i] = children[i]
-          }
-        } else {
-          // 传入数字type 是number类型， 返回对应nodeType子元素
-          switch (type) {
-            case 1: // 元素节点
-              break
-            case 2: // 属性节点
-              break
-            case 3: // 文本节点
-              break
-            case 8: // 注释节点
-              break
-            case 9: // document
-              break
-            case 11: // DocumentFragment
-              break
+      Element.prototype.getChild = function (index) {
+        let childNodes = this.childNodes,
+            len = childNodes.length,
+            item,
+            type = typeof(index)
+
+        let res = { // 伪数组
+          length: 0,
+          push: Array.prototype.push,
+          splice: Array.prototype.splice
+        }
+
+        for (let i = 0; i < len; i++) {
+          item = childNodes[i]
+          if (item.nodeType === 1) {
+            res.push(item)
           }
         }
-        return res
+        if (index !== undefined && type !== 'number') {
+          return undefined
+        }
+
+        return index === undefined ? res: res[index]
       }
 
     </script>

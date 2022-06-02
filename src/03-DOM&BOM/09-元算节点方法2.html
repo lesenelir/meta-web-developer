@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div>
+      <h1>标题标签</h1>
+      <p>我是段落标签</p>
+      <a href="">超链接标签</a>
+    </div>
+
+    <script>
+      // 1. 插入节点方法
+      // c.insertBefore(a, b)
+      // Node.prototype
+      // 插入：在父级c节点下的子节点b之前插入a节点
+      let div = document.getElementsByTagName('div')[0]
+      let p = document.getElementsByTagName('p')[0]
+      let a = document.createElement('a')
+      a.href = ''
+      a.innerHTML = '自定义超链接标签'
+      div.insertBefore(a, p)
+
+      // 删除节点
+      // 2. 父节点.removeChild(子节点) - 删除父亲节点中的子节点
+      // 还是会在内存中保留
+      // div.removeChild(p)
+
+      // 删除节点
+      // 3. 节点.remove()
+      // 内存中销毁
+      // p.remove()
+
+      // 节点替换
+      // 父节点.replaceChild(new, origin)
+      let h1 = document.createElement('h1')
+      h1.innerHTML = '新创建的h1'
+      div.replaceChild(h1, p)
+
+
+      // innerHTML
+      // 两个存在于HTMLElement.prototype
+      // innerHTML 不仅存在于HTMLElement.prototype 还存在于 Element.prototype
+      // div.innerHTML = 123
+      // div.innerHTML += 456
+      // div.innerHTML += '<a>自定义超链接</a>'
+
+
+    </script>
+  </body>
+</html>

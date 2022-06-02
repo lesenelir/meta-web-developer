@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .running {
+        color: green;
+      }
+      .warning {
+        color: orange;
+      }
+      .danger {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="running">
+      系统正在正常运行中
+    </div>
+
+    <script>
+      // 1. 设置节点属性
+      // 节点.setAttribute(属性名,值)
+      let div = document.getElementsByTagName('div')[0]
+      div.setAttribute('id', 'box')
+
+      // 2. 获取节点属性
+      // 节点.getAttribute(属性名)
+      let attr = div.getAttribute('id')
+      console.log(attr)
+
+      function setSystemStatus(status) {
+        div.setAttribute('class', status) // 设置div的属性
+        switch (status) {
+          case 'running':
+            div.innerHTML = '系统正常运行中'
+            break
+          case 'warning':
+            div.innerHTML = '系统运行中有告警异常'
+            break
+          case 'danger':
+            div.innerHTML = '系统存在危险'
+            break
+          default:
+            div.innerHTML = '系统处于未知状况'
+        }
+      }
+
+    </script>
+
+  </body>
+</html>

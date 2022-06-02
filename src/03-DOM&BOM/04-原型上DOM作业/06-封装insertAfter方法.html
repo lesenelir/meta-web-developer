@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div>
+      <p></p>
+      <h1></h1>
+      <a href=""></a>
+    </div>
+
+    <script>
+      // 原型上封装insertAfter方法
+      // 类似于 insertBefore
+      // 思路： 找到该元素的下一个元素，在下一个元素之前调用insertBefore
+      // 因为只需要获取元素节点，所有写在Element原型上
+
+      Element.prototype.insertAfter = function (target, afterNode) {
+        let nextElem = afterNode.nextElementSibling
+        // console.log(nextElem) // nextElem 是下一个标签
+        if (nextElem) {
+          this.insertBefore(target, nextElem) // 在nextElem之前插入target
+        } else {
+          this.appendChild(target)
+        }
+      }
+
+      let div = document.getElementsByTagName('div')[0]
+      let h1 = document.getElementsByTagName('h1')[0]
+      let a = document.getElementsByTagName('a')[0]
+      let strong = document.createElement('strong')
+
+      // div.insertAfter(strong, a)
+      div.insertAfter(strong, a)
+
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+
+    <script>
+      // 查看滚动条的距离
+      // 常规： window.pageXOffset / pageYOffset
+
+      // 封装滚动条方法 - 兼容性写法
+      function getScrollOffset() {
+        if (window.pageXOffset) {
+          return {
+            left: window.pageXOffset,
+            top: window.pageYOffset
+          }
+        } else {
+          return {
+            left: document.body.scrollLeft + document.documentElement.scrollLeft,
+            top: document.body.scrollTop + document.documentElement.scrollTop
+          }
+        }
+      }
+
+      // 操作滚动条
+      // window.scroll(x, y) 和 window.scrollTo(x, y)
+      // window.scrollBy(x, y)
+
+
+    </script>
+
+  </body>
+</html>

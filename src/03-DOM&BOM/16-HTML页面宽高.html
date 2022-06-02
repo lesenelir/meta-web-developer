@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      // HTML页面的宽高，不仅仅包括可视区域
+      // HTML 文档的宽高
+      // document.body.scrollHeight / scrollWidth
+      // document.documentElement.scrollHeight / scrollWidth
+
+      // scrollWidth = window.innerWidth（可视区域大小） + window.pageXOffset
+      // 同理 scrollHeight
+
+      // 封装获取HTML全部页面的宽高
+      function getScrollSize() {
+        if (document.body.scrollWidth) {
+          return {
+            width: document.body.scrollWidth,
+            height: document.body.scrollHeight
+          }
+        } else {
+          return {
+            width: document.documentElement.scrollWidth,
+            height: document.documentElement.scrollHeight
+          }
+        }
+      }
+
+      // 获取元素的top 和 left 值
+      // offsetTop 和 offsetLeft 是距离上一层最近定位的元素，如果没有则相对于HTML文档
+
+
+      // offsetWidth 和 offsetHeight 是访问元素盒子的物理宽高
+      // offsetWidth 和 offsetHeight 会把padding 考虑在内
+
+    </script>
+  </body>
+</html>

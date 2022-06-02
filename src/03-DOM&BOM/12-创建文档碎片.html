@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <ul id="list"></ul>
+
+    <script>
+      // 创建文档碎片（片段）
+      // 文档片段 优点： 不再DOM节点中
+      document.createDocumentFragment()
+
+      // 书写oUl 前面有一个o代表是 一个DOM对象
+      let oUl = document.getElementById('list')
+      // let oDiv = document.createElement('div') // 创建一个空的div防止出现回流问题
+      let oFrag = document.createDocumentFragment()
+      for (let i = 0; i < 1000; i++) {
+        let oLi = document.createElement('li')
+        oLi.innerHTML = i + '、这是第' + i + '个项目'
+        oLi.setAttribute('class', 'list-item')
+        // oUl直接会产生大量的回流， 所以要用新创建的div来处理
+        // oUl.appendChild(oLi)
+        // oDiv.appendChild(oLi)
+        oFrag.appendChild(oLi)
+      }
+      // oUl.appendChild(oDiv)
+      oUl.appendChild(oFrag)
+      // oFrag 相对于 oDiv 减少了破坏HTML结构的问题
+
+
+      // Note：createDocumentFragment() 用法 - 用于：列表
+      //   用createDocumentFragment() 保存列表保存列表的DOM结构，再交给外层的容器
+      //   防止页面的回流
+
+    </script>
+
+  </body>
+</html>

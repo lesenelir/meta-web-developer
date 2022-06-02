@@ -15,7 +15,26 @@
     </div>
 
     <script>
-      // 需求： 找出一个元素的第N层父级元素
+      // 需求： 找出一个元素的第n层父级元素
+      Element.prototype.findElementNFather = function (n) {
+        let type = typeof(n),
+            elem = this  // 此处的this是调用findElementNFather的
+
+        if (type === 'undefined' || type !== 'number') {
+          return elem.parentNode
+        } else if (n < 0) {
+          return undefined
+        }
+
+        while (n--) {
+          if (elem.nodeName === 'HTML') { // 封顶：html以上就返回null
+            elem = null
+            return elem
+          }
+          elem = elem.parentNode
+        }
+        return elem
+      }
 
     </script>
 

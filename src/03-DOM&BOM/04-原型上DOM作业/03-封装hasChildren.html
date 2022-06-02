@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      // 原生JS 只有 hasChildNodes方法
+
+      // 原型上编程 hasChildren 判断父元素有没有子元素节点
+      Element.prototype.hasChildren = function (target) {
+        let children = this.childNodes,
+            len = children.length,
+            item
+
+        for (let i = 0; i < len; i++) {
+          item = children[i]
+          if (item.nodeType === 1) {
+            return true
+          }
+        }
+        return false
+      }
+    </script>
+  </body>
+</html>
