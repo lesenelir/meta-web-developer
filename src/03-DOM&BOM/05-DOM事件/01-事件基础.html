@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+      }
+
+      .loading {
+        background-color: darkseagreen;
+      }
+
+      .test {
+        width: 100px;
+        height: 100px;
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <!--  内联事件监听器  -->
+    <button onclick="console.log(1)">按钮</button>
+
+    <div class="test"></div>
+
+    <script>
+      // 事件 - 反馈： 绑定事件的处理函数
+      // 事件： 点击、移入移出
+      // 绑定事件  =  绑定事件的处理函数
+      // 事件源： 点击谁，谁就是事件源， 事件源不存在捕获和冒泡， 事件源的执行顺序按照绑定先后顺序来判定
+      let oDiv = document.getElementsByClassName('box')[0]
+      oDiv.onclick = function () { // 句柄
+        this.style.backgroundColor = 'orange'
+      }
+
+      // 事件 + 事件的反馈 = 前端交互
+
+      // 如何绑定事件处理函数
+      // elem.onclick = function() {}
+      // elem.addEventListener(事件类型, 事件处理函数, false(事件冒泡) | true(事件捕获))
+      // elem.attachEvent(事件类型，事件处理函数)
+
+      let oBtn = document.getElementsByTagName('button')[0]
+      oBtn.addEventListener('click', function () { // 点击加载，过两秒后复原
+        this.innerHTML = '加载中...'
+        this.className = 'loading'
+
+        setTimeout(() => {
+          this.innerHTML = '按钮'
+          this.className = ''
+        }, 2000)
+      }, false)
+
+      // addEventListener 可以绑定多个事件处理函数  -  W3C注册事件监听器
+      // 【易错：】
+      let oTest = document.getElementsByClassName('test')[0]
+      oTest.addEventListener('click', test, false)
+      oTest.addEventListener('click', test, false)  // 只执行一次，因为只绑定了一次事件处理函数test
+
+      function test() {
+        console.log(1)
+      }
+
+
+    </script>
+
+  </body>
+</html>

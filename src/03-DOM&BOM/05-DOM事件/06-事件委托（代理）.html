@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <button>增加li</button>
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+      <li>5</li>
+    </ul>
+    <script>
+      // 事件委托，事件代理
+      // e.target 事件触发的引用
+      let oUl = document.getElementsByTagName('ul')[0],
+          oLi = document.getElementsByTagName('li'),
+          oBtn = document.getElementsByTagName('button')[0]
+
+      oUl.onclick = function (e) {
+        // console.log(e.target) // li
+        // console.log(this) // ul
+        console.log(e.target.innerText)
+      }
+
+      oBtn.onclick = function () {
+        let li = document.createElement('li')
+        li.innerText = oLi.length + 1
+        oUl.appendChild(li)
+      }
+
+
+    </script>
+
+  </body>
+</html>
