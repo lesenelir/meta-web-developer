@@ -12,4 +12,5 @@ console.log(1 || 2) // 1
 console.log(1 && undefined && 2 && null) // undefined
 console.log(1 || undefined || 2 || null) // 1
 
+// Note： && 找假 ； || 找真
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // 鼠标行为 -> 坐标系
+      // clientX/Y  鼠标位置相对于当前可视区域的坐标
+      // layerX/Y   = pageX/Y 【IE11以下不支持】
+      // screenX/Y  鼠标位置相对于屏幕的坐标
+      // x/y  = clientX/Y 【火狐不支持】
+      // pageX/Y 鼠标位置相对于当前整个文档的坐标（包含滚动条的距离）【IE9以下不支持】 可视区域 + 滚动条
+      // offsetX/Y  鼠标位置相对于块元素的坐标 【包含边框，safari不包含边框】
+
+      document.onclick = function (e) {
+        console.log(e.clientX, e.clientY)
+      }
+
+      // 封装滚动条方法 - 兼容性写法
+      function getScrollOffset() {
+        if (window.pageXOffset) {
+          return {
+            left: window.pageXOffset,
+            top: window.pageYOffset
+          }
+        } else {
+          return {
+            left: document.body.scrollLeft + document.documentElement.scrollLeft,
+            top: document.body.scrollTop + document.documentElement.scrollTop
+          }
+        }
+      }
+
+      // 封装pageX/Y - 兼容性写法
+      function pagePos(e) {
+        let sLeft = getScrollOffset().left,
+            sTop = getScrollOffset().top,
+            // 获取文档偏移 (margin)
+            cLeft = document.documentElement.clientLeft || 0,
+            cTop = document.documentElement.clientTop || 0
+
+        return {
+          X: e.clientX + sLeft - cLeft,
+          Y: e.clientY + sTop - cTop
+        }
+      }
+
+    </script>
+  </body>
+</html>

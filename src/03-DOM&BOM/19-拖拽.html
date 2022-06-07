@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      let box = document.getElementsByClassName('box')[0]
+
+      // mousedown mouseup mousemove
+
+      // 鼠标按下 并且 移动 -> 移动事件的处理函数写到鼠标按下的处理函数内部
+
+      // 拖拽简易版 - 缺点：拖拽的是左上角； 移动的时候是获取鼠标的xy值
+      // document.onmousemove = function (e) {
+      //   let x = e.pageX,
+      //       y = e.pageY
+      //
+      //   box.style.left = x + 'px'
+      //   box.style.top = y + 'px'
+      // }
+
+      // 拖拽正式版
+      box.onmousedown = function (e) {
+        let x = e.pageX - this.offsetLeft,
+            y = e.pageY - this.offsetTop
+
+        // 防止瞬间移动鼠标时，帧率不同，使用document
+        document.onmousemove = function (e) {
+          box.style.left = x + 'px'
+          box.style.top = y + 'px'
+        }
+
+        box.onmouseup = function (e) {
+          document.onmousemove = null
+          document.onmouseup = null
+        }
+      }
+
+    </script>
+  </body>
+</html>
