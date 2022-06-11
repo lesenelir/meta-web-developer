@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div id="wrapper"></div>
+    <script>
+      // Element.innerHTML 设置和获取元素的html
+
+      let oWrapper = document.getElementById('wrapper')
+      oWrapper.innerHTML = '<h1>123</h1>'
+
+      console.log(oWrapper.textContent)
+
+      // innerHTML 的值 是一个字符串 （注意和JSX语法的区别）
+      // 当使用了innerHTML，调用innerHTML的标签内所有的内容都会被删除
+
+      // 使用innerHTML显示HTML源码
+      // let code = document.documentElement.innerHTML.replace(/</g, '&lt;')
+      // document.documentElement.innerHTML = '<pre>' + code + '</pre>'
+      //
+      // console.log(code)
+
+      // 设置innerHTML到底发生了什么?
+      /**
+       *  innerHTML = '<h1>123</h1>'
+       *  <h1>123</h1> 解析为HTML文档结构
+       *  用DocumentFragment 这个HTML文档变为DOM节点
+       *  原本父节点上的内容都会被替换成DOM节点
+       */
+
+      // 插入纯文本时，使用innerText 给元素渲染文本节点
+      // innerText 会 收到CSS影响， 回流 reflow
+
+    </script>
+  </body>
+</html>
