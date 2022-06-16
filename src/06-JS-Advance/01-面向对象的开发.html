@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <div class="text">123</div>
+    <button class="btn">点击</button>
+
+    <script>
+
+      function Test() {
+        this.oBtn = document.getElementsByClassName('btn')[0]
+        this.oText = document.getElementsByClassName('text')[0]
+        this.content = 567
+      }
+
+      Test.prototype = {
+        init: function () {
+          // 原型对象中的this是实例对象
+          // console.log(this)
+          this.bindEvent()
+        },
+        bindEvent: function () {
+          this.oBtn.addEventListener('click', this.textChange.bind(this), false)
+        },
+        textChange: function () {
+          // 如果是实例直接调用该方法则this指向实例对象
+          // 该方法是作为某个事件的处理函数，则该方法中的this是事件的绑定的源对象，如果想指回实例，则需要bind
+          // console.log(this)
+          let text = this.oText
+          text.innerHTML = this.content
+        }
+      }
+
+      let test = new Test()
+      test.init()
+
+    </script>
+
+  </body>
+</html>
