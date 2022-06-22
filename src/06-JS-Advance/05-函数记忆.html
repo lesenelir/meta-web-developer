@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <script>
+      /**
+       *  函数记忆 -> 函数优化 -> 缓存函数
+       *
+       */
+
+      function factorial(n) {
+        if (n === 0 || n === 1) return 1
+        return n * factorial(n - 1)
+      }
+
+      // 通过闭包方式来缓存数据
+      function memorize(fn) {
+        let cache = {}
+
+        return function () {
+          //  拼接key值
+          // 通过call方法，把[].join方法挂载到arguments下，可以使用join操作arguments
+          let k = Array.prototype.join.call(arguments)
+          console.log(cache)
+          // 缓存池中如果有数据
+          return cache[k] = cache[k] || fn.apply(this, arguments)
+        }
+      }
+
+      let f = memorize(factorial)
+
+      for (let i = 0; i <= 12; i++) {
+        console.log(f(i))
+      }
+
+    </script>
+  </body>
+</html>
