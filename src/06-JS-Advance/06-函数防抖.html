@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: darkseagreen;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      // 对于在事件触发n秒后执行的回调 -> 延迟执行
+      // 如果n秒内再触发事件，重新开始计时
+      let oBx = document.getElementsByClassName('box')[0]
+
+      // 污染全局， 问题：初次触发事件时，会延迟执行
+      let t = null
+      oBx.onmouseover = function () {
+        clearTimeout(t)
+        t = setTimeout(() => {
+          console.log(1)
+        }, 1000)
+      }
+
+      // ajax提交 ， 输入验证，提交数据 ajax请求
+
+      // debounce
+
+      // 防抖函数
+      // triggerNow 为true 首次进来不进行防抖处理
+      function debounce(fn, delay, triggerNow) {
+        let t = null
+
+        return function () {
+          let self = this,
+              args = arguments // 赋值函数的参数
+
+          if (t) clearTimeout(t)
+
+          if (triggerNow) {
+            let exec = !t
+
+            t = setTimeout(() => {
+              t = null
+            }, delay)
+
+            if (exec) {
+              fn.apply(self, args)
+            }
+          } else {
+            // triggerNow 为false  -> 第一次就开始进行防抖的操作
+            t = setTimeout(() => {
+              fn.apply(self, args)
+            }, time)
+          }
+        }
+
+      }
+
+
+    </script>
+  </body>
+</html>
