@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  </head>
+  <body>
+    <button id="button">button</button>
+    <script>
+      // 使用箭头函数替换bind this方法
+      // DOM的面向对象的写法
+      (function () {
+        // 构造方法
+        function Button() {
+          this.button = document.getElementById('button') // 构造方法属性
+        }
+
+        // 构造方法的方法写在原型上
+        Button.prototype = {
+          init() {
+            this.bindEvent() // 初始化调用bindEvent方法
+          },
+          bindEvent() {
+            // this.button.addEventListener('click', this.clickBtn.bind(this),false)
+            // 使用箭头函数方式
+            // 类似于React的事件处理函数
+            this.button.addEventListener('click', (e) => this.clickBtn(e), false)
+          },
+          clickBtn(e) {
+            console.log(this)
+            console.log(e)
+          }
+        }
+
+        new Button().init()
+      })()
+
+    </script>
+
+  </body>
+</html>
