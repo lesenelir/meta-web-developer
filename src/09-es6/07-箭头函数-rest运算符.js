@@ -121,8 +121,11 @@ function f7() {
 f7(1,2,3,4)
 
 
-
-
+let f111 = function () { // f111 是一个函数，而不是返回值1
+  return 1
+}
+console.log(f111) // [Function: f111]
+// f111()执行后返回的是1
 
 
 
